@@ -1,0 +1,71 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/screen2.dart';
+import 'package:flutter_application_1/screens/screen3.dart';
+import 'package:flutter_application_1/screens/screen4.dart';
+
+class Screen1 extends StatelessWidget {
+  const Screen1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Pantalla 1', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color.fromARGB(255, 49, 1, 51),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Seleciona una opción'),
+            SizedBox(height: 20),
+            boton(
+              'Boton 1',
+              const Color.fromARGB(255, 152, 120, 207),
+              Screen2(),
+              context,
+            ),
+            SizedBox(height: 20),
+            boton(
+              'Boton 2',
+              const Color.fromARGB(255, 240, 63, 51),
+              Screen3(),
+              context,
+            ),
+            SizedBox(height: 20),
+            boton(
+              'Boton 3',
+              const Color.fromARGB(255, 77, 185, 81),
+              Screen4(),
+              context,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Widget boton(
+  String texto,
+  Color color1,
+  StatelessWidget screen,
+  BuildContext context,
+) {
+  return ElevatedButton(
+    onPressed: () {
+      //Abre otras pantallas en la app
+      Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+    },
+    style: ElevatedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      backgroundColor: color1,
+      textStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        // color: color1,
+      ),
+    ),
+    child: Text(texto),
+  );
+}
